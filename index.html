@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solutions by M — AI Implementation Hub | Egypt & MENA</title>
+  <title>Solutions by M | AI Implementation Hub</title>
   <meta name="description" content="Solutions by M is an AI implementation agency in Egypt. We build custom AI agents, workflow automation, and intelligent business systems for companies across Egypt and the MENA region." />
   <meta name="keywords" content="AI agency Egypt, AI automation Egypt, workflow automation Egypt, AI implementation MENA, business automation Cairo, AI agents Egypt, digital transformation Egypt, automation agency Middle East" />
   <meta name="robots" content="index, follow" />
@@ -12,13 +12,13 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://solutionsbym.tech/" />
-  <meta property="og:title" content="Solutions by M — AI Implementation Hub | Egypt & MENA" />
+  <meta property="og:title" content="Solutions by M | AI Implementation Hub" />
   <meta property="og:description" content="Custom AI systems, automation pipelines, and intelligent workflows built for businesses in Egypt and the MENA region." />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Solutions by M — AI Implementation Hub" />
+  <meta name="twitter:title" content="Solutions by M | AI Implementation Hub" />
   <meta name="twitter:description" content="Custom AI systems and automation built for businesses in Egypt and the MENA region." />
 
   <!-- Structured Data -->
@@ -55,6 +55,8 @@
       --border: #e5e7eb;
       --card-bg: #0d0d0d;
       --card-preview: #0a0a0a;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     html { scroll-behavior: smooth; }
@@ -76,10 +78,14 @@
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       z-index: 50;
+      transition: box-shadow 0.3s var(--ease);
     }
+
+    nav.scrolled { box-shadow: 0 1px 24px rgba(0,0,0,0.06); }
 
     .logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; }
     .logo span { color: var(--accent); }
@@ -94,11 +100,15 @@
       padding: 10px 20px;
       border: 1px solid var(--black);
       border-radius: 6px;
-      transition: all 0.2s;
+      transition: background 0.25s var(--ease), color 0.25s var(--ease), transform 0.2s var(--ease);
       min-height: 44px;
     }
 
-    .nav-btn:hover { background: var(--black); color: var(--white); }
+    .nav-btn:hover {
+      background: var(--black);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
 
     /* HERO */
     .hero {
@@ -116,6 +126,9 @@
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.6s var(--ease-out) 0.1s forwards;
     }
 
     .hero h1 {
@@ -124,6 +137,9 @@
       line-height: 1.08;
       letter-spacing: -2px;
       margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.7s var(--ease-out) 0.2s forwards;
     }
 
     .hero p {
@@ -131,6 +147,9 @@
       color: var(--gray);
       max-width: 540px;
       margin: 0 auto 40px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.7s var(--ease-out) 0.35s forwards;
     }
 
     .hero-cta {
@@ -143,14 +162,21 @@
       border-radius: 8px;
       font-weight: 600;
       font-size: 15px;
-      transition: opacity 0.2s;
+      transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
       cursor: pointer;
       font-family: inherit;
       border: none;
       min-height: 52px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.7s var(--ease-out) 0.5s forwards;
     }
 
-    .hero-cta:hover { opacity: 0.85; }
+    .hero-cta:hover {
+      opacity: 0.88;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
 
     /* METRICS */
     .metrics {
@@ -168,8 +194,10 @@
       padding: 32px 24px;
       text-align: center;
       border-right: 1px solid var(--border);
+      transition: background 0.3s var(--ease);
     }
 
+    .metric:hover { background: #fafafa; }
     .metric:last-child { border-right: none; }
     .metric-value { font-size: 30px; font-weight: 800; letter-spacing: -1.5px; }
     .metric-label { font-size: 12px; color: var(--gray); margin-top: 4px; }
@@ -203,6 +231,18 @@
       line-height: 1.7;
     }
 
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* SERVICE CARDS */
     .services-grid {
       display: grid;
@@ -215,10 +255,14 @@
       border: 1px solid #1a1a1a;
       border-radius: 16px;
       overflow: hidden;
-      transition: border-color 0.3s;
+      transition: border-color 0.35s var(--ease), transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
     }
 
-    .service-card:hover { border-color: var(--accent-border); }
+    .service-card:hover {
+      border-color: var(--accent-border);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3), 0 0 0 1px rgba(37,99,235,0.1);
+    }
 
     .card-visual {
       height: 180px;
@@ -257,6 +301,11 @@
       border-radius: 100px;
       padding: 4px 10px;
       white-space: nowrap;
+      transition: background 0.2s var(--ease), color 0.2s var(--ease);
+    }
+
+    .service-card:hover .tag {
+      background: rgba(37,99,235,0.18);
     }
 
     /* PROCESS */
@@ -275,7 +324,13 @@
       overflow: hidden;
     }
 
-    .step { background: #111827; padding: 32px; }
+    .step {
+      background: #111827;
+      padding: 32px;
+      transition: background 0.3s var(--ease);
+    }
+
+    .step:hover { background: #131e2e; }
 
     .step-num {
       font-size: 36px;
@@ -284,7 +339,10 @@
       letter-spacing: -2px;
       margin-bottom: 14px;
       opacity: 0.5;
+      transition: opacity 0.3s var(--ease);
     }
+
+    .step:hover .step-num { opacity: 0.8; }
 
     .step h3 { font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
     .step p { font-size: 14px; color: #9ca3af; line-height: 1.65; }
@@ -292,6 +350,18 @@
     /* WHY */
     .why { background: var(--light); }
     .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+
+    .why-item {
+      padding: 24px;
+      border-radius: 12px;
+      transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+
+    .why-item:hover {
+      background: #ececec;
+      transform: translateY(-2px);
+    }
+
     .why-item h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
     .why-item p { font-size: 14px; color: var(--gray); line-height: 1.65; }
 
@@ -310,14 +380,18 @@
       border-radius: 8px;
       font-weight: 700;
       font-size: 15px;
-      transition: opacity 0.2s;
+      transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
       cursor: pointer;
       font-family: inherit;
       border: none;
       min-height: 52px;
     }
 
-    .cta-btn:hover { opacity: 0.85; }
+    .cta-btn:hover {
+      opacity: 0.88;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
 
     /* FOOTER */
     footer {
@@ -330,6 +404,11 @@
       color: var(--gray);
       flex-wrap: wrap;
       gap: 12px;
+    }
+
+    /* KEYFRAMES */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* MOBILE */
@@ -358,9 +437,8 @@
       .card-visual svg { transform: scale(0.85); transform-origin: center; }
 
       .process-steps { grid-template-columns: 1fr; }
-      .step:first-child { border-radius: 0; }
 
-      .why-grid { grid-template-columns: 1fr; gap: 24px; }
+      .why-grid { grid-template-columns: 1fr; gap: 8px; }
 
       footer { padding: 24px 20px; flex-direction: column; text-align: center; }
     }
@@ -371,6 +449,15 @@
       .metric:nth-child(odd) { border-right: none; }
       .metric:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
       .metric:last-child { border-bottom: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      .hero-tag, .hero h1, .hero p, .hero-cta { opacity: 1; transform: none; animation: none; }
     }
   </style>
 
@@ -386,7 +473,7 @@
 </head>
 <body>
 
-  <nav>
+  <nav id="main-nav">
     <div class="logo">Solutions <span>by M</span></div>
     <button class="nav-btn" data-cal-link="solutionsbym/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}'>Book a call</button>
   </nav>
@@ -395,7 +482,7 @@
     <div class="hero">
       <span class="hero-tag">AI Implementation Hub</span>
       <h1>We build systems that make your business run itself.</h1>
-      <p>Custom AI, automation, and intelligent workflows — built around how you actually operate. Not generic tools. Not templates. Yours.</p>
+      <p>Custom AI, automation, and intelligent workflows built around how you actually operate. Not generic tools. Not templates. Yours.</p>
       <button class="hero-cta" data-cal-link="solutionsbym/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}'>Book a free call →</button>
     </div>
 
@@ -421,13 +508,13 @@
     <!-- SERVICES -->
     <section id="services" aria-labelledby="services-title">
       <div class="section-inner">
-        <div class="section-label">What We Build</div>
-        <h2 id="services-title" class="section-title">Four ways we change how you operate.</h2>
-        <p class="section-sub">Every engagement starts with your business — not a product catalog. We identify what's slowing you down and build exactly what fixes it.</p>
+        <div class="section-label reveal">What We Build</div>
+        <h2 id="services-title" class="section-title reveal" style="transition-delay:0.08s">Four ways we change how you operate.</h2>
+        <p class="section-sub reveal" style="transition-delay:0.16s">Every engagement starts with your business, not a product catalog. We identify what is slowing you down and build exactly what fixes it.</p>
 
         <div class="services-grid">
 
-          <div class="service-card">
+          <div class="service-card reveal" style="transition-delay:0.1s">
             <div class="card-visual" aria-hidden="true">
               <svg width="280" height="160" viewBox="0 0 280 160">
                 <line x1="70" y1="80" x2="140" y2="80" stroke="#2563eb" stroke-width="1" stroke-opacity="0.3"/>
@@ -462,7 +549,7 @@
             </div>
           </div>
 
-          <div class="service-card">
+          <div class="service-card reveal" style="transition-delay:0.2s">
             <div class="card-visual" aria-hidden="true">
               <svg width="300" height="160" viewBox="0 0 320 160">
                 <rect x="20" y="55" width="50" height="50" rx="10" fill="#111" stroke="#1e1e1e" stroke-width="1.2"/>
@@ -505,7 +592,7 @@
             </div>
           </div>
 
-          <div class="service-card">
+          <div class="service-card reveal" style="transition-delay:0.3s">
             <div class="card-visual" aria-hidden="true">
               <svg width="300" height="160" viewBox="0 0 300 160">
                 <defs>
@@ -552,7 +639,7 @@
             </div>
           </div>
 
-          <div class="service-card">
+          <div class="service-card reveal" style="transition-delay:0.4s">
             <div class="card-visual" aria-hidden="true">
               <svg width="300" height="160" viewBox="0 0 300 160">
                 <line x1="60" y1="20" x2="60" y2="140" stroke="#1e1e1e" stroke-width="2"/>
@@ -570,7 +657,7 @@
               </svg>
             </div>
             <div class="card-body">
-              <h3>AI Strategy & Consulting</h3>
+              <h3>AI Strategy and Consulting</h3>
               <p>Not sure where to start? We map your operations, identify the highest-leverage areas, and give you a clear roadmap.</p>
               <div class="tags">
                 <span class="tag">Operations audit</span>
@@ -586,21 +673,21 @@
     <!-- PROCESS -->
     <section class="process" id="how" aria-labelledby="how-title">
       <div class="section-inner">
-        <div class="section-label">How It Works</div>
-        <h2 id="how-title" class="section-title">Three steps. No fluff.</h2>
-        <p class="section-sub">We move fast. Most clients see something working within the first 48 hours.</p>
+        <div class="section-label reveal">How It Works</div>
+        <h2 id="how-title" class="section-title reveal" style="transition-delay:0.08s">Three steps. No fluff.</h2>
+        <p class="section-sub reveal" style="transition-delay:0.16s">We move fast. Most clients see something working within the first 48 hours.</p>
         <div class="process-steps">
-          <div class="step">
+          <div class="step reveal" style="transition-delay:0.1s">
             <div class="step-num">01</div>
             <h3>Talk</h3>
-            <p>We get on a call. You walk us through your operations — what's slow, what's manual, what's costing you time or money. We listen and ask the right questions.</p>
+            <p>We get on a call. You walk us through your operations — what is slow, what is manual, what is costing you time or money. We listen and ask the right questions.</p>
           </div>
-          <div class="step">
+          <div class="step reveal" style="transition-delay:0.22s">
             <div class="step-num">02</div>
             <h3>Build</h3>
-            <p>We design and build exactly what your business needs. You're involved throughout. No surprises at delivery — just a system that fits.</p>
+            <p>We design and build exactly what your business needs. You are involved throughout. No surprises at delivery, just a system that fits.</p>
           </div>
-          <div class="step">
+          <div class="step reveal" style="transition-delay:0.34s">
             <div class="step-num">03</div>
             <h3>Deploy</h3>
             <p>We launch, test, and hand it over. You get full ownership. We stay available for support, iterations, and whatever comes next.</p>
@@ -612,25 +699,25 @@
     <!-- WHY -->
     <section class="why" aria-labelledby="why-title">
       <div class="section-inner">
-        <div class="section-label">Why Us</div>
-        <h2 id="why-title" class="section-title">Built different by design.</h2>
-        <p class="section-sub">No large agency overhead. No account managers in the middle. You work directly with the people building your system.</p>
+        <div class="section-label reveal">Why Us</div>
+        <h2 id="why-title" class="section-title reveal" style="transition-delay:0.08s">Built different by design.</h2>
+        <p class="section-sub reveal" style="transition-delay:0.16s">No large agency overhead. No account managers in the middle. You work directly with the people building your system.</p>
         <div class="why-grid">
-          <div class="why-item">
-            <h3>Built for your business — not adapted to it</h3>
+          <div class="why-item reveal" style="transition-delay:0.1s">
+            <h3>Built for your business, not adapted to it</h3>
             <p>Every system is scoped around your actual operations. No generic templates, no off-the-shelf tools repackaged as custom work.</p>
           </div>
-          <div class="why-item">
+          <div class="why-item reveal" style="transition-delay:0.2s">
             <h3>Practical over impressive</h3>
-            <p>We don't build AI for the sake of it. We build what actually moves the needle — automating the right things, delivering measurable outcomes.</p>
+            <p>We do not build AI for the sake of it. We build what actually moves the needle, automating the right things and delivering measurable outcomes.</p>
           </div>
-          <div class="why-item">
+          <div class="why-item reveal" style="transition-delay:0.3s">
             <h3>Fast and direct</h3>
-            <p>Faster decisions, faster delivery. Clients work with the people building — no layers, no delays.</p>
+            <p>Faster decisions, faster delivery. Clients work with the people building, no layers, no delays.</p>
           </div>
-          <div class="why-item">
+          <div class="why-item reveal" style="transition-delay:0.4s">
             <h3>Accessible price point</h3>
-            <p>Enterprise AI consulting is priced out of reach for most growing businesses. We serve that gap — serious technical quality at a scale that makes sense for SMBs across Egypt and the MENA region.</p>
+            <p>Enterprise AI consulting is priced out of reach for most growing businesses. We serve that gap, serious technical quality at a scale that makes sense for SMBs across Egypt and the MENA region.</p>
           </div>
         </div>
       </div>
@@ -639,18 +726,20 @@
     <!-- CTA -->
     <section class="cta-section" aria-labelledby="cta-title">
       <div class="section-inner">
-        <h2 id="cta-title" class="section-title">Tell us what's slowing you down.</h2>
-        <p class="section-sub">One conversation is enough to know if we can help. No commitment, no pitch deck — just a real talk about your business.</p>
-        <button class="cta-btn" data-cal-link="solutionsbym/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}'>Book a free call →</button>
+        <h2 id="cta-title" class="section-title reveal">Tell us what is slowing you down.</h2>
+        <p class="section-sub reveal" style="transition-delay:0.1s">One conversation is enough to know if we can help. No commitment, no pitch deck, just a real talk about your business.</p>
+        <div class="reveal" style="transition-delay:0.2s">
+          <button class="cta-btn" data-cal-link="solutionsbym/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}'>Book a free call →</button>
+        </div>
       </div>
     </section>
   </main>
 
   <!-- WhatsApp floating button -->
   <a href="https://wa.me/201270954545" target="_blank" rel="noopener noreferrer"
-    style="position:fixed;bottom:28px;right:28px;z-index:100;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s,box-shadow 0.2s;"
-    onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 8px 32px rgba(37,211,102,0.55)'"
-    onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.4)'"
+    style="position:fixed;bottom:28px;right:28px;z-index:100;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.3s cubic-bezier(0.25,0.46,0.45,0.94);"
+    onmouseover="this.style.transform='scale(1.12) translateY(-2px)';this.style.boxShadow='0 10px 36px rgba(37,211,102,0.55)'"
+    onmouseout="this.style.transform='scale(1) translateY(0)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.4)'"
     aria-label="Chat on WhatsApp">
     <svg width="28" height="28" viewBox="0 0 32 32" fill="white">
       <path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.664 4.785 1.82 6.773L2 30l7.45-1.79A13.94 13.94 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm7.37 19.77c-.31.87-1.53 1.59-2.5 1.8-.67.14-1.54.25-4.48-.96-3.76-1.54-6.18-5.37-6.37-5.62-.18-.24-1.5-2-1.5-3.82 0-1.82.94-2.71 1.28-3.08.34-.37.74-.46 1-.46.25 0 .5.01.71.02.23.01.53-.09.83.63.31.74 1.06 2.56 1.15 2.75.09.18.15.4.03.64-.12.24-.18.39-.35.6-.18.21-.37.47-.53.63-.18.18-.36.38-.15.74.21.36.92 1.52 1.97 2.46 1.36 1.21 2.5 1.59 2.86 1.77.36.18.57.15.78-.09.21-.24.9-1.05 1.14-1.41.24-.36.48-.3.81-.18.33.12 2.1 1 2.46 1.18.36.18.6.27.69.42.09.15.09.87-.22 1.74z"/>
@@ -661,6 +750,27 @@
     <div class="logo">Solutions <span>by M</span></div>
     <div>© 2026 Solutions by M. All rights reserved.</div>
   </footer>
+
+  <script>
+    // Nav shadow on scroll
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
