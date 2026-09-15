@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="400" height="120">
+  <!-- M path made of circuit-style lines -->
+  <path d="M12 48 L12 12 L32 34 L52 12 L52 48" stroke="#2563eb" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+  <!-- Corner squares (circuit nodes) -->
+  <rect x="8.5" y="8.5" width="7" height="7" fill="#2563eb"/>
+  <rect x="48.5" y="8.5" width="7" height="7" fill="#2563eb"/>
+  <!-- Center diamond node -->
+  <rect x="28.5" y="30.5" width="7" height="7" fill="#2563eb" opacity="0.5"/>
+  <!-- Bottom dots -->
+  <circle cx="12" cy="48" r="3" fill="#2563eb" opacity="0.4"/>
+  <circle cx="52" cy="48" r="3" fill="#2563eb" opacity="0.4"/>
+
+  <!-- Wordmark -->
+  <text x="70" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="800" font-size="22" letter-spacing="-0.8" fill="#0a0a0a">Solutions</text>
+  <text x="70" y="54" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="700" font-size="13" letter-spacing="2" fill="#2563eb">BY M</text>
+</svg>
