@@ -89,7 +89,8 @@
 
     nav.scrolled { box-shadow: 0 1px 24px rgba(0,0,0,0.06); }
 
-    .logo img { height: 44px; width: 44px; border-radius: 10px; display: block; object-fit: cover; }
+    .logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; }
+    .logo span { color: var(--accent); }
 
     .nav-btn {
       cursor: pointer;
@@ -475,7 +476,7 @@
 <body>
 
   <nav id="main-nav">
-    <div class="logo"><img src="logo.png" alt="Solutions by M" /></div>
+    <div class="logo">Solutions <span>by M</span></div>
     <button class="nav-btn" data-cal-link="solutionsbym/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}'>Book a call</button>
   </nav>
 
@@ -748,7 +749,7 @@
   </a>
 
   <footer>
-    <div class="logo"><img src="logo.png" alt="Solutions by M" /></div>
+    <div class="logo">Solutions <span>by M</span></div>
     <div>© 2026 Solutions by M. All rights reserved.</div>
   </footer>
 
